@@ -11,7 +11,7 @@ public class FizzBuzz {
 		
 		System.out.println("Enter FizzBuzz upper boundry:");
 		
-		Scanner scanner = new Scanner(System.in);
+		try (Scanner scanner = new Scanner(System.in)) {
 			
 			int input = scanner.nextInt();
 
@@ -31,9 +31,11 @@ public class FizzBuzz {
 			System.out.println(fizz + "\n" + buzz + "\n" + fizzbuzz);
 			
 			
-		} 
+		} catch (Exception e) {
+			System.out.println("Invalid input.Please enter numeric upper boundary");
+		}
 	}
 
-	
+}	
 	
 
