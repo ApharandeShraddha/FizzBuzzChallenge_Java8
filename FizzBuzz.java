@@ -1,6 +1,8 @@
 package kenzan.java8.solution;
 
 import java.util.Scanner;
+import java.util.stream.IntStream;
+import static java.util.stream.Collectors.joining;
 
 public class FizzBuzz {
 
@@ -16,9 +18,17 @@ public class FizzBuzz {
 			StringBuilder fizzbuzz = new StringBuilder("fizzbuzz:");
 			StringBuilder fizz = new StringBuilder("fizz:");
 			StringBuilder buzz = new StringBuilder("buzz:");
-			StringBuilder others = new StringBuilder("others:");
+			StringBuilder others = new StringBuilder();
 
-			//To Do : Logic in Java 8
+			IntStream.rangeClosed(1, input).parallel()
+			.mapToObj(i -> i % (5 * 3) == 0 ? fizzbuzz.append(i + ",")
+					: i % 3 == 0 ? fizz.append(i + ",")
+							: i % 5 == 0 ? buzz.append(i + ",") : others.append(i + ","))
+			.collect(joining(System.lineSeparator()));
+			System.out.println("FizzBuzz Results");
+			System.out.println("==============================");
+			
+			System.out.println(fizz + "\n" + buzz + "\n" + fizzbuzz);
 			
 			
 		} 
